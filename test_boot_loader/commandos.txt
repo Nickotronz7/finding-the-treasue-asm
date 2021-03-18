@@ -1,0 +1,2 @@
+nasm -o boot.bin boot.asm
+sudo dd bs=440 count=1 conv=notrunc if=boot.bin of=/dev/sdc
