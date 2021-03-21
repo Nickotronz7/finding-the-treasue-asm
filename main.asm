@@ -33,9 +33,11 @@ _Merror:
     call _start
 _facil:
     load_Lab l1
+    call _Init
     ;macrifacil
 _dificil:
     load_Lab l2
+    call _Init
     ;macro en dificil
 _Init: 
     writefilemac lab, 0, game, 1368
