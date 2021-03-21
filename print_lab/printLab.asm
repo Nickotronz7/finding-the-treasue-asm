@@ -1,4 +1,4 @@
-
+%include "functions.asm"
 %include "linux64.inc"
 
 section .data
