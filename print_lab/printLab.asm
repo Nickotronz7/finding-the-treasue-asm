@@ -5,7 +5,7 @@ section .data
     laberinto db "lab.txt",0
  
  section .bss
-    text resb 1273
+    text resb 1274
  
 section .text
     global _start
@@ -26,7 +26,7 @@ _start:
  
     mov rax, SYS_READ
     mov rsi, text
-    mov rdx, 1273
+    mov rdx, 1274
     syscall
 
     mov rax, SYS_CLOSE
