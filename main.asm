@@ -13,6 +13,7 @@ section .data
 
  section .bss
     lab resb 1368
+    action resb 64
  
 section .text
     global _start
