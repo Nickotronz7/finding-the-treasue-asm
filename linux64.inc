@@ -68,6 +68,15 @@ section .bss
 	syscall
 %endmacro
 
+%macro getAction 0
+	mov qword [action], 0
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, action
+    mov rdx, 64
+    syscall
+%endmacro
+
 %macro writefilemac 4 ; what_to_write, where_to_write, file_name, how_many
 
 	mov rax, SYS_OPEN
