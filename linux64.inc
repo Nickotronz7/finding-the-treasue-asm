@@ -126,12 +126,31 @@ section .bss
 
 %endmacro
 
-; _closefile:
-;     mov rax, SYS_CLOSE
-;     mov rdi, filename
-;     syscall
-    
-;     ret
+%macro readChar 1 ; la posicion
+
+	mov qword [char], 0
+
+	mov rax, SYS_OPEN
+	mov rdi, game
+	mov rsi, O_RDONLY
+	mov rdx, 0
+	syscall
+
+	push rax
+	mov rdi, rax
+	mov rax, SYS_LSEEK
+	mov rsi, %1
+	mov rdx, 0
+	syscall
+
+	mov rax, SYS_READ
+	mov rsi, char
+	mov rdx, 1
+	syscall
+
+	closefile game
+
+%endmacro
 
 %macro closefile 1 ; file_name
 
@@ -140,6 +159,7 @@ section .bss
 	syscall
 
 %endmacro
+
 
 
 ;-------------------------------------------------------------------------------
