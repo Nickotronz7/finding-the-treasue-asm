@@ -200,6 +200,8 @@ _moveR:
 _Play:
     print lab
     print nl
+    print MnsDisp
+    print ;numero disparos
     print MnsPlay
     getAction;comparacion para realizar mov o r o f o l
     mov rax,[action]
