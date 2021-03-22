@@ -17,6 +17,9 @@ section .data
     MnsYN db "Para confirmar s para declinar n",10,0
     MnsFin db "Desea Finalizar el juego?",10,0
     MnsFin1 db "Gracias por jugar!",10,0
+    MnsDer db "Perdistes maldito insecto!",10,0
+    MnsAgain db "Desea volver a jugar!",10,0
+    MnsWin db "Ganaste maldito insecto!",10,0
 
  section .bss
     lab resb 1368
@@ -80,11 +83,38 @@ _reset:
     print MnsError
     cmp rax,2670
     jne _reset
-
+_exit:
+    exit
 _Init:
     mov r15, 99
     writefilemac lab, 0, game, 1368
     call _Play
+_lose:
+    print MnsDer
+    print MnsAgain
+    print MnsYN
+    getAction
+    mov rax, [action]
+    cmp rax, 2675
+    je _start
+    cmp rax, 2670
+    je _exit
+    print MnsError
+    cmp rax, 2670
+    jne _lose
+_Win:
+    print MnsWin
+    print MnsAgain
+    print MnsYN
+    getAction
+    mov rax, [action]
+    cmp rax, 2675
+    je _start
+    cmp rax, 2670
+    je _exit
+    print MnsError
+    cmp rax, 2670
+    jne _Win
 
 _moveDown:
     mov r8, r15
