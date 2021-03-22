@@ -7,11 +7,12 @@ section .data
     space db " ", 10, 0
     alien db "@", 10, 0
     nl db "", 10, 0
+    MnsPlay db "Elija la accion a realizar",10,0
     MnsDif db "Elija la dificultad del juego",10,0
     MnsDif1 db "'d' para dificil 'f' para facil :",10,0
     MnsError db "Selecione una opcion valida",10,0
     MnsReinicio db "Desea Reiniciar el juego?",10,0
-    MnsYN db "Para confirmar s para declinar n"
+    MnsYN db "Para confirmar s para declinar n",10,0
     MnsFin db "Desea Finalizar el juego?",10,0
     MnsFin1 db "Gracias por jugar!",10,0
 
@@ -54,10 +55,12 @@ _reset:
     cmp rax,2670
     je _Play
     print MnsError
+    cmp rax,2670
     jne _reset
 _Init: 
     writefilemac lab, 0, game, 1368
 _Play:
+    print MnsPlay
     getAction;comparacion para realizar mov o r o f o l
     mov rax,[action]
     cmp rax,2674
