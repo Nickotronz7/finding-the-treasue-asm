@@ -135,6 +135,9 @@ _moveDown:
     cmp r8, 175
     je _Play
 
+    cmp r8, 78
+    je _Play
+
     cmp r8, 98
     je _lose
 
@@ -165,6 +168,9 @@ _moveUp:
     je _Play
 
     cmp r8, 95
+    je _Play
+
+    cmp r8, 78
     je _Play
 
     cmp r8, 98
@@ -199,6 +205,9 @@ _moveL:
     cmp r8, 124
     je _Play
 
+    cmp r8, 78
+    je _Play
+
     cmp r8, 98
     je _lose
 
@@ -231,6 +240,9 @@ _moveR:
     cmp r8, 124
     je _Play
 
+    cmp r8, 78
+    je _Play
+
     cmp r8, 98
     je _lose
 
@@ -254,9 +266,11 @@ _Play:
     print lab
     print nl
     print MnsDisp
-    printVal r14;numero disparos
+    printVal r14 ;numero disparos
     print nl
     print MnsPlay
+    cmp r12, 1
+    je _Win
     getAction;comparacion para realizar mov o r o f o l
     mov rax,[action]
 
@@ -302,6 +316,13 @@ _shot:
     writefilemac space, r8, game, 1
     inc r8
     writefilemac space, r8, game, 1
+    cmp r9, 78
+    jne s2
+    dec r8
+    mov r15, r8
+    writefilemac alien, r15, game, 1
+    mov r12, 1
+    call sEnd
 
 
 s2:
@@ -314,6 +335,13 @@ s2:
     writefilemac space, r8, game, 1
     inc r8
     writefilemac space, r8, game, 1
+    cmp r9, 78
+    jne s3
+    dec r8
+    mov r15, r8
+    writefilemac alien, r15, game, 1
+    mov r12, 1
+    call sEnd
 
 s3:
     mov r8, r15
@@ -325,6 +353,13 @@ s3:
     writefilemac space, r8, game, 1
     inc r8
     writefilemac space, r8, game, 1
+    cmp r9, 78
+    jne s4
+    dec r8
+    mov r15, r8
+    writefilemac alien, r15, game, 1
+    mov r12, 1
+    call sEnd
 
 s4:
     mov r8, r15
@@ -336,6 +371,13 @@ s4:
     writefilemac space, r8, game, 1
     dec r8
     writefilemac space, r8, game, 1
+    cmp r9, 78
+    jne sEnd
+    dec r8
+    mov r15, r8
+    writefilemac alien, r15, game, 1
+    mov r12, 1
+    call sEnd
 
 sEnd:
     load_Lab game
