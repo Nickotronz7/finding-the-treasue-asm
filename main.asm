@@ -45,6 +45,21 @@ _dificil:
     load_Lab l2
     call _Init
     ;macro en dificil
+_end:
+    print MnsFin
+    print MnsYN
+    getAction
+    mov rax,[action]
+    cmp rax,2675
+    je _end1
+    cmp rax,2670
+    je _Play
+    print MnsError
+    cmp rax,2670
+    jne _end
+_end1:
+    print MnsFin1
+    exit
 _reset:
     print MnsReinicio
     print MnsYN
@@ -60,9 +75,12 @@ _reset:
 _Init: 
     writefilemac lab, 0, game, 1368
 _Play:
+    print lab
     print MnsPlay
     getAction;comparacion para realizar mov o r o f o l
     mov rax,[action]
-    cmp rax,2674
+    cmp rax,2674;r
     je _reset
+    cmp rax,2662;f
+    je _end
     exit
