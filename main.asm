@@ -20,6 +20,7 @@ section .data
     MnsDer db "Perdistes maldito insecto!",10,0
     MnsAgain db "Desea volver a jugar!",10,0
     MnsWin db "Ganaste maldito insecto!",10,0
+    MnsDisp db "Numero de disparos : ",10,0
 
  section .bss
     lab resb 1368
