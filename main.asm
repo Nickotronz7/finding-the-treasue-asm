@@ -19,8 +19,10 @@ section .data
     MnsFin1 db "Gracias por jugar!",10,0
     MnsDer db "Perdistes maldito insecto!",10,0
     MnsAgain db "Desea volver a jugar!",10,0
-    MnsWin db "Ganaste maldito insecto!",10,0
+    MnsWin db "│Ganaste maldito insecto!│",10,0
+    MnsWin1 db "+------------------------+",10,0
     MnsDisp db "Numero de disparos : ",10,0
+
 
  section .bss
     lab resb 1368
@@ -104,7 +106,9 @@ _lose:
     cmp rax, 2670
     jne _lose
 _Win:
+    print MnsWin1
     print MnsWin
+    print MnsWin1
     print MnsAgain
     print MnsYN
     getAction
