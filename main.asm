@@ -86,6 +86,7 @@ _reset:
     print MnsError
     cmp rax,2670
     jne _reset
+    
 _exit:
     exit
 
@@ -97,7 +98,9 @@ _Init:
     call _Play
 
 _lose:
+    print MnsWin1
     print MnsDer
+    print MnsWin1
     print MnsAgain
     print MnsYN
     getAction
